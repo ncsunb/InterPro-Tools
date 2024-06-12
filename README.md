@@ -48,7 +48,7 @@ To run this program
 
 3. Paste this command into your terminal `python3 Main.py` (or press 'Run' if you have it open in VSCode or another IDE).
 
-In the terminal you will see a prompt 
+In the terminal you will see a prompt to enter the InterPro accesssion for the protein family / Domain. You can search your protein family / Domain of interest on [InterPro](https://www.ebi.ac.uk/interpro/search/text/) and find the InterPro accession in the results (the format is like IPR012345)
 ```
 Enter the InterPro accessions for the protein family/domain, then hit enter.
 (If there are multiple separate them by spaces): 
