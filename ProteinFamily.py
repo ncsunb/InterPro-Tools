@@ -130,7 +130,6 @@ if __name__ == '__main__':
         for tid in taxon_id_nums:
             protfam_domain = ProteinFamily(ian, tid, "Output")
             protfam_domain.get_match_subsequences()
-            pass
     
 
 
