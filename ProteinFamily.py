@@ -3,7 +3,6 @@ import requests
 import json 
 from Protein import Protein
 from pathlib import Path
-import re
 
 api_url = 'https://www.ebi.ac.uk/interpro/api/protein/UniProt/entry/InterPro/'
 query_path = f"/taxonomy/uniprot/"
@@ -30,7 +29,7 @@ class ProteinFamily:
             raise Exception(f"** HTTP Response Code {response.status_code} from {url}")
 
     def __retrieve_entry_matches(self):
-        print(f"Retrieving Entries for {self.accession} in taxid {self.query_taxon_id}...")
+        print(f"\nRetrieving Entries for {self.accession} in taxid {self.query_taxon_id}...")
         entry_match_dict = dict()
         
         # emulating a 'do while' loop with 'True' condition and conditional break statement
@@ -61,7 +60,7 @@ class ProteinFamily:
     def __get_proteins(self):
         proteins = dict()
         entry_dict = self.get_entry_matches()
-        print(f"Retrieving Proteins for {self.accession} in taxid {self.query_taxon_id}...")
+        print(f"\nRetrieving Proteins for {self.accession} in taxid {self.query_taxon_id}...")
         for accession, taxid_entry_list in entry_dict.items():
             for taxid, entries in taxid_entry_list:
                 proteins[accession] = Protein(accession, taxid, f"{self.outdirectory}/proteins/")
@@ -97,7 +96,7 @@ class ProteinFamily:
         outfile = open(f"{self.outdirectory}/{self.accession}_{self.query_taxon_id}_subsequence_matches.fasta", "w")
 
 
-        print(f"Finding Protein Subsequence Matches for {self.accession} in taxid {self.query_taxon_id}...")
+        print(f"\nFinding Protein Subsequence Matches for {self.accession} in taxid {self.query_taxon_id}...")
         for accession, prot in proteins.items():
             subseqs = self.__extract_sequence_matches_from_protein(accession)
             for i in range(0, len(subseqs)):
@@ -106,30 +105,5 @@ class ProteinFamily:
                 if i < len(subseqs) - 1:
                     outfile.write("\n")
             
-if __name__ == '__main__':
-
-    ipr_accession_re = r"IPR\d+"
-    while True:
-        ipr_accession_nums = input("Enter the InterPro accessions for the protein family/domain, then hit enter.\n (If there are multiple separate them by spaces): ").split()
-        arg_count = len(ipr_accession_nums)
-        ipr_accession_nums = [accession.strip() for accession in ipr_accession_nums if re.match(ipr_accession_re, accession.upper())]
-        if len(ipr_accession_nums) == arg_count:
-            break
-        else:
-            print("Please ensure all provided accessions are InterPro accessions, e.g., IPR012345")
-
-    while True:
-        try:
-            taxon_id_nums = input("Enter the taxon ID(s) for the taxon you wish to search, then hit enter\n (If there are multiple separate them by spaces): ").split()
-            taxon_id_nums = [int(taxon_id.strip()) for taxon_id in taxon_id_nums]
-            break
-        except:
-            print("Please provide a valid integer response.")
-
-    for ian in ipr_accession_nums:
-        for tid in taxon_id_nums:
-            protfam_domain = ProteinFamily(ian, tid, "Output")
-            protfam_domain.get_match_subsequences()
-    
 
 
