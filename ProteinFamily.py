@@ -94,16 +94,18 @@ class ProteinFamily:
     def get_match_subsequences(self):
         proteins = self.get_proteins()
         outfile = open(f"{self.outdirectory}/{self.accession}_{self.query_taxon_id}_subsequence_matches.fasta", "w")
-
-
+        first_line = True
         print(f"\nFinding Protein Subsequence Matches for {self.accession} in taxid {self.query_taxon_id}...")
         for accession, prot in proteins.items():
             subseqs = self.__extract_sequence_matches_from_protein(accession)
             for i in range(0, len(subseqs)):
-                seq = subseqs[i]
+                seq = subseqs[i]        
                 outfile.write(f">{prot.get_accession()}|{prot.get_source_db()}|{prot.get_name()}|{prot.get_source_organism_name()}|taxID:{prot.get_taxid()}\n{seq}")
-                if i < len(subseqs) - 1:
+                if first_line:
+                    first_line = False
+                else:
                     outfile.write("\n")
+ 
             
 
 
