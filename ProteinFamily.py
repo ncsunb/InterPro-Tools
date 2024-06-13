@@ -99,12 +99,13 @@ class ProteinFamily:
         for accession, prot in proteins.items():
             subseqs = self.__extract_sequence_matches_from_protein(accession)
             for i in range(0, len(subseqs)):
-                seq = subseqs[i]        
-                outfile.write(f">{prot.get_accession()}|{prot.get_source_db()}|{prot.get_name()}|{prot.get_source_organism_name()}|taxID:{prot.get_taxid()}\n{seq}")
                 if first_line:
                     first_line = False
                 else:
                     outfile.write("\n")
+                seq = subseqs[i]        
+                outfile.write(f">{prot.get_accession()}|{prot.get_source_db()}|{prot.get_name()}|{prot.get_source_organism_name()}|taxID:{prot.get_taxid()}\n{seq}")
+
  
             
 
