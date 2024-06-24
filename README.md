@@ -25,7 +25,7 @@ source venv/bin/activate
 pip3 install requests
 ```
 ```
-# when you which to deactivate your virtual environment after you are done using it, use this command:
+# when you wish to deactivate your virtual environment after you are done using it, use this command:
 deactivate
 ```
 That should be it!
