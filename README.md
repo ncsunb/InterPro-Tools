@@ -24,11 +24,11 @@ source venv/bin/activate
 
 pip3 install requests
 ```
+That should be it!
+When you wish to deactivate your virtual environment after you are done using it, use this command:
 ```
-# when you wish to deactivate your virtual environment after you are done using it, use this command:
 deactivate
 ```
-That should be it!
 
 # Downloading this project
 1. Start by installing [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), if you haven't already.
