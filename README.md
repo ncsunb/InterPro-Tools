@@ -11,7 +11,7 @@ _If you have macOS_ you may install [Python](https://docs.brew.sh/Homebrew-and-P
 # install python
 brew install python3
 ```  
-**If you have Windows**, 
+**If you have Windows**,  
 a. Click the download button at the top of [Python](https://www.python.org/downloads/)   
 b. Open the downloaded installer, check off the option about adding Python to PATH.  
 c. Click Install.  
