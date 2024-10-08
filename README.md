@@ -11,28 +11,20 @@ _If you have macOS_ you may install [Python](https://docs.brew.sh/Homebrew-and-P
 # install python
 brew install python3
 ```  
-**If you have Windows**, after installing Python you will need to add some Paths to your system environment variables.  
-To do so,  
-a. In your search for 'Environment Variables' in your start page, and select the app that pops up.  
-b. If the window that pops up says 'System Properties', then click on the 'Environment Variables' button, otherwise skip to the next step.  
-c. In the box on the lower half of the window, it should list system variables. Scroll until you see 'Path', then select that.  
-d. Click 'Edit'.  
-e. Open the command prompt application and type 'ls C:\Program Files\Python3' __then hit the 'tab' key to auto-complete the path__. This is the path you will need to add to your system path environment variable.  
-f. Back in the 'Edit Environment Variable' window, click 'New', and add the path from step e. (starting with "C:\")  
-g. click 'New', and add the path from step e. (starting with "C:\") plus add "\Scripts" to the end.  
-h. Click 'OK'  
-i. Click on PATHEXT under System Variables, and click 'Edit'  
-j. _Without deleting the text in the variable value field_, add ".PY;.PYW" to the end of the variable value field.  
-k. Click 'OK' 
-l. Click 'OK' again  
-m. Close the Command Prompt application in order for the new changes to take effect.  
-n. To check that it worked, open the Command Prompt application, type "python --version", and hit enter. If it tells you the version instead of giving you an error about not recognizing it, it worked.
+**If you have Windows**, 
+a. Click the download button at the top of [Python](https://www.python.org/downloads/)   
+b. Open the downloaded installer, check off the option about adding Python to PATH.  
+c. Click Install.  
+d. Close the Command Prompt application in order for the new changes to take effect.  
+e. To check that it worked, open the Command Prompt application, type "python --version", and hit enter. If it tells you the version instead of giving you an error about not recognizing it, it worked.
 
 
 2. You must have the Python [requests](https://pypi.org/project/requests/) package installed. You may use pip to install this by pasting this command into your terminal: `pip3 install requests`.   
 **You may wish to do this inside a virtual environment** (or if you use HomeBrew it may instruct you to use a virtual environment before attempting to install things with pip) by pasting these commands into your terminal/command prompt:  
 **macOS instructions**:
 ```
+cd ~/Desktop/[YOUR PATH TO YOUR FOLDER FOR THIS PROJECT]
+
 mkdir venv # make a directory for your virtual environment
 
 python3 -m venv venv # Create your virtual environment inside the venv directory
@@ -43,6 +35,8 @@ pip3 install requests
 ```
 **Windows instructions**:
 ```
+cd C:\Usr\[Name]\[YOUR PATH TO YOUR FOLDER FOR THIS PROJECT]
+
 mkdir venv  # make a directory for your virtual environment
 
 python -m venv venv  # Create your virtual environment inside the venv directory
@@ -60,11 +54,13 @@ deactivate
 ```
 
 # Downloading this project
-1. Start by installing [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), if you haven't already. __When installing on Windows__, download the file from that link, double clik it and then just use the default values for all the options. You don't care about having the GUI or the release notes, so don't worry about that.
+1. Start by installing [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), if you haven't already. __When installing on Windows__, download the file from that link, double click it and then just use the default values for all the options. You don't care about having the GUI or the release notes, so don't worry about that.
 
-2. From the terminal, navigate (using `cd path-of-your-folder-where-you-want-it`, replacing path-of-your-folder-where-you-want-it with the actual path) to the directory you wish to download this project to. 
+2. On Windows only, in the start menu search system environment variables, open that.  Click environment variables in the bottom right. Select Path from the bottom box, for _system environment variables_, and click edit. Click new and add 'C:\Program Files\Git\cmd' and do the same thing for this 'C:\Program Files\Git\bin'. Click OK and leave the app. If you have a command prompt window open, close it for the changes to take effect.
 
-3. Paste the following command in your terminal `git clone https://github.com/ncsunb/InterPro-Tools.git`
+3. From the terminal, navigate (using `cd path-of-your-folder-where-you-want-it`, replacing path-of-your-folder-where-you-want-it with the actual path) to the directory you wish to download this project to. 
+
+4. Paste the following command in your terminal `git clone https://github.com/ncsunb/InterPro-Tools.git`
 
 That's it!
 
